@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - c - sequence non squares</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="seqnonsquares.js"></script>
+<button class="seqnonsquares">run c sequence non squares</button>
+<script>
+
+  /* test case with loop in js*/
+  /*function testCase() {
+    const nonsquare = Module.cwrap('nonsqr', 'number', ['number'])
+
+    const max = 1000000;
+    let sequence = [];
+
+    for (let i = 0; i < max; i++)
+    {
+      sequence.push(nonsquare(i))
+    }
+    //log result
+    //console.log(sequence);
+  }*/
+
+  /* test case with loop inside wasm  */
+  function testCase() {
+
+    let sequence = [];
+    const arrayLength = 5000000;
+    const bytesPerElement = Module.HEAP32.BYTES_PER_ELEMENT;
+    const arrayPointer = Module._malloc((arrayLength * bytesPerElement));
+    Module.HEAP32.set(sequence, (arrayPointer / bytesPerElement));
+
+    Module.ccall('run_seqnonsquares',
+      'number',
+      ['number', 'number'],
+      [arrayPointer, arrayLength]);
+
+    //log result
+    //console.log(new Int32Array(Module.HEAP32.buffer, arrayPointer, arrayLength));
+
+    Module._free(arrayPointer);
+  }
+
+  document.querySelector('.seqnonsquares')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>
+
+

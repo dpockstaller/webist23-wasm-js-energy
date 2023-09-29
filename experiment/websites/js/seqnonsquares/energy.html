@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - js - sequence non squares</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="seqnonsquares.js"></script>
+<button class="seqnonsquares">run js sequence non squares</button>
+<script>
+
+  function testCase() {
+    const max = 5000000;
+    let sequence = [];
+
+    for (let i = 0; i < max; i++)
+    {
+      sequence.push(nonSquare(i))
+    }
+    //log result
+    //console.log(sequence);
+  }
+
+  document.querySelector('.seqnonsquares')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - js - countingsort</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="countingsort.js"></script>
+<script type="text/javascript" src="../../datasets/unsorted1m.js"></script>
+<button class="countingsort">run js countingsort</button>
+<script>
+
+  function testCase() {
+    countingsort(dataset, 0, dataset.length);
+  }
+
+  document.querySelector('.countingsort')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>
+
+

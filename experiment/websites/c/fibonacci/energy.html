@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - c - fibonacci</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="fibonacci.js"></script>
+<button class="fibonacci">run c fibonacci</button>
+<script>
+
+  function testCase() {
+    const position = 40;
+
+    Module.ccall('fibonacci',
+      'number',
+      ['number'],
+      [position]);
+  }
+
+  document.querySelector('.fibonacci')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>
+
+

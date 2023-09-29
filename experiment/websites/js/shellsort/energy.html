@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - js - shellsort</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="shellsort.js"></script>
+<script type="text/javascript" src="../../datasets/unsorted1m.js"></script>
+<button class="shellsort">run js shellsort</button>
+<script>
+
+  function testCase() {
+    shellsort(dataset);
+  }
+
+  document.querySelector('.shellsort')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>

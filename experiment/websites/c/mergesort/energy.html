@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - c - mergesort</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="mergesort.js"></script>
+<script type="text/javascript" src="../../datasets/unsorted100k.js"></script>
+<button class="mergesort">run c mergesort</button>
+<script>
+
+  function testCase() {
+    const arrayLength = dataset.length;
+    const bytesPerElement = Module.HEAP32.BYTES_PER_ELEMENT;
+
+    const arrayPointer = Module._malloc((arrayLength * bytesPerElement));
+
+    Module.HEAP32.set(dataset, (arrayPointer / bytesPerElement));
+
+    Module.ccall('merge_sort',
+      null,
+      ['number', 'number'],
+      [arrayPointer, arrayLength]);
+
+    //log result
+    //console.log(new Int32Array(Module.HEAP32.buffer, arrayPointer, arrayLength));
+
+    Module._free(arrayPointer);
+  }
+
+  document.querySelector('.mergesort')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>
+
+

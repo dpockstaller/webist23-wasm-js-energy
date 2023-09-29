@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - js - mergesort</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="mergesort.js"></script>
+<script type="text/javascript" src="../../datasets/unsorted100k.js"></script>
+<button class="mergesort">run js mergesort</button>
+<script>
+
+  function testCase() {
+    mergesort(dataset);
+  }
+
+  document.querySelector('.mergesort')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>
+
+

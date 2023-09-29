@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - js - bubblesort</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="bubblesort.js"></script>
+<script type="text/javascript" src="../../datasets/unsorted25k.js"></script>
+<button class="bubblesort">run js bubblesort</button>
+<script>
+
+  function testCase() {
+    bubble_sort(dataset);
+  }
+
+  document.querySelector('.bubblesort')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>
+
+

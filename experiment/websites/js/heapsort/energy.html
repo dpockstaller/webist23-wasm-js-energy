@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - js - heapsort</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="heapsort.js"></script>
+<script type="text/javascript" src="../../datasets/unsorted800k.js"></script>
+<button class="heapsort">run js heapsort</button>
+<script>
+
+  function testCase() {
+    heapsort(dataset);
+  }
+
+  document.querySelector('.heapsort')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>
+
+

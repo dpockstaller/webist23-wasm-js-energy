@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - js - perfectnumbers</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="perfectnumbers.js"></script>
+<button class="perfectnumbers">run js perfectnumbers</button>
+<script>
+
+  function testCase() {
+    const max = 500000;
+    let cnt = 0;
+
+    for (let i = 2; i < max; i++)
+    {
+      if (perfectnumber(i))
+        cnt++;
+    }
+    //log results of counter
+    //console.log(cnt);
+  }
+
+  document.querySelector('.perfectnumbers')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>
+
+

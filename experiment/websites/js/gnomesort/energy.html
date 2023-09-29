@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - js - gnomesort</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="gnomesort.js"></script>
+<script type="text/javascript" src="../../datasets/unsorted25k.js"></script>
+<button class="gnomesort">run js gnomesort</button>
+<script>
+
+  function testCase() {
+    gnomesort(dataset);
+  }
+
+  document.querySelector('.gnomesort')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>

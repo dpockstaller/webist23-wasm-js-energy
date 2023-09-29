@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - c - shellsort</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="shellsort.js"></script>
+<script type="text/javascript" src="../../datasets/unsorted1m.js"></script>
+<button class="shellsort">run c shellsort</button>
+<script>
+
+  function testCase() {
+    const arrayLength = dataset.length;
+    const bytesPerElement = Module.HEAP32.BYTES_PER_ELEMENT;
+
+    const arrayPointer = Module._malloc((arrayLength * bytesPerElement));
+
+    Module.HEAP32.set(dataset, (arrayPointer / bytesPerElement));
+
+    Module.ccall('shellsort',
+      null,
+      ['number', 'number'],
+      [arrayPointer, arrayLength]);
+
+    //log result
+    //console.log(new Int32Array(Module.HEAP32.buffer, arrayPointer, arrayLength));
+
+    Module._free(arrayPointer);
+  }
+
+  document.querySelector('.shellsort')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>
+
+

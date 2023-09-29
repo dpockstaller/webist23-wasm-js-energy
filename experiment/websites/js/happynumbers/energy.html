@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-us" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>wasm-energy-study - js - happynumbers</title>
+  <style>
+    button {
+      width:100%;
+      height: 20vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<script async type="text/javascript" src="happynumbers.js"></script>
+<button class="happynumbers">run js happynumbers</button>
+<script>
+
+  function testCase() {
+
+    var cnt = 50000;
+    var number = 1;
+
+    while(cnt-- > 0) {
+      while(!happy(number))
+        number++;
+      //log results
+      //console.log(number);
+      number++;
+    }
+  }
+
+  document.querySelector('.happynumbers')
+    .addEventListener('click', function() {
+      testCase();
+    });
+
+</script>
+</body>
+</html>
+
+
