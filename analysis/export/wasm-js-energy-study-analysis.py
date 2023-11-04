@@ -34,7 +34,7 @@ import scikits.bootstrap as boot
 
 
 sns.set(rc = {'figure.figsize':(10,10)})
-confidence_level = 0.95 
+confidence_level = 0.95
 
 df = pd.read_csv('./data/energy.csv',sep=';',quotechar='"',names=["browser", "language", "algorithm", "device", "energy"])
 df['energy_total'] = df['energy'].astype(float)
@@ -71,26 +71,26 @@ for browser in browsers:
 
 # Create the pandas DataFrame
 count = pd.DataFrame(data, columns = ['browser', 'language', 'algorithm', 'device', 'count'])
-display(count)
+print(count.to_string())
 
 
-# ## Calculations
+# ## Total Energy
 
 # In[5]:
 
 
 data = []
-for implementation in implementations:
-    x = df[(df['implementation'] == implementation)]
-    cnt = x.size
-    sum = numpy.round(numpy.sum(x['energy']), 2)
+for device in devices:
+    for implementation in implementations:
+        x = df[(df['device'] == device) & (df['implementation'] == implementation)]
+        sum = numpy.round(numpy.sum(x['energy']), 2)
 
-    data.append(
-        [implementation, cnt, sum]
-    )
+        data.append(
+            [device, implementation, sum]
+        )
         
 # Create the pandas DataFrame
-stat = pd.DataFrame(data, columns = ['implementation', 'count', 'sum'])
+stat = pd.DataFrame(data, columns = ['device', 'implementation', 'sum'])
 print(stat.to_string())
 
 
